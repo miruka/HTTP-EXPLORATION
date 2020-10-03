@@ -4,12 +4,12 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-app.post("/contacts", (req, res) => {
-  res.send(req.body);
-  //   res.status(200).json({
-  //     Message: "Welcome to HTTP Exploration",
-  //   });
+app.use(express.static("public"));
+app.put("/post/:id", (req, res) => {
+  res.json({
+    id: req.params.id,
+    title: req.body.title,
+  });
 });
 
 app.listen(process.env.PORT || 5000, () => {
